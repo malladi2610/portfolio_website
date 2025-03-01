@@ -8,11 +8,14 @@ import Home from "@/pages/home";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 
+// Get base from Vite's environment configuration
+const base = import.meta.env.BASE_URL;
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
-        <Router>
+        <Router base={base}>
           <div className="min-h-screen bg-background flex flex-col">
             <Nav />
             <main className="flex-grow pt-16">
