@@ -33,10 +33,10 @@ export default function ProjectCard({
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardTitle className="text-foreground">{title}</CardTitle>
+          <CardDescription className="text-muted-foreground">{description}</CardDescription>
         </CardHeader>
 
         <CardContent>
@@ -44,7 +44,7 @@ export default function ProjectCard({
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 text-sm bg-[#3498DB]/10 text-[#3498DB] rounded"
+                className="px-2 py-1 text-sm bg-primary/10 text-primary rounded"
               >
                 {tag}
               </span>
