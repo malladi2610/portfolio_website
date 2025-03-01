@@ -3,28 +3,55 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
 
-const NavLinks = ({ onClick }: { onClick?: () => void }) => (
-  <>
-    <Link href="#projects">
-      <a onClick={onClick} className="text-[#333333] hover:text-[#3498DB]">Projects</a>
-    </Link>
-    <Link href="#skills">
-      <a onClick={onClick} className="text-[#333333] hover:text-[#3498DB]">Skills</a>
-    </Link>
-    <Link href="#contact">
-      <a onClick={onClick} className="text-[#333333] hover:text-[#3498DB]">Contact</a>
-    </Link>
-  </>
-);
+const NavLinks = ({ onClick }: { onClick?: () => void }) => {
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      if (onClick) onClick();
+    }
+  };
+
+  return (
+    <>
+      <button
+        onClick={() => handleScroll('projects')}
+        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+      >
+        Projects
+      </button>
+      <button
+        onClick={() => handleScroll('skills')}
+        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+      >
+        Skills
+      </button>
+      <button
+        onClick={() => handleScroll('blog')}
+        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+      >
+        Blog
+      </button>
+      <button
+        onClick={() => handleScroll('contact')}
+        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+      >
+        Contact
+      </button>
+    </>
+  );
+};
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -37,6 +64,14 @@ export default function Nav() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <NavLinks />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="ml-4"
+          >
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
         </div>
 
         {/* Mobile Navigation */}
@@ -49,6 +84,16 @@ export default function Nav() {
           <SheetContent>
             <div className="flex flex-col gap-6 pt-12">
               <NavLinks onClick={() => setIsOpen(false)} />
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  setTheme(theme === "dark" ? "light" : "dark");
+                  setIsOpen(false);
+                }}
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
