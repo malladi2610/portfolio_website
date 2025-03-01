@@ -14,9 +14,9 @@ function App() {
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
         <div className="min-h-screen bg-background flex flex-col">
           <Nav />
-          <main className="flex-grow">
-            <Route path="/portfolio_website/" component={Home} />
-            <Route path="/portfolio_website/*" component={NotFound} />
+          <main className="flex-grow pt-16">
+            <Route path="/" component={Home} />
+            <Route path="/*" component={NotFound} />
           </main>
           <Footer />
         </div>
