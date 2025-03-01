@@ -17,7 +17,7 @@ export default function Hero() {
         >
           <div className="rounded-full overflow-hidden w-40 h-40 mx-auto mb-8">
             <img 
-              src="https://images.unsplash.com/photo-1573496799515-eebbb63814f2" 
+              src={new URL('/src/assets/profile.jpg', import.meta.url).href}
               alt="Professional headshot"
               className="w-full h-full object-cover"
             />
