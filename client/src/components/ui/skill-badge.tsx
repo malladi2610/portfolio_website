@@ -16,13 +16,13 @@ export default function SkillBadge({ name, icon: Icon, level }: SkillBadgeProps)
     >
       <Card className="overflow-hidden">
         <CardContent className="p-6 flex flex-col items-center gap-3">
-          <div className="text-3xl text-[#3498DB]">
+          <div className="text-3xl text-primary">
             <Icon />
           </div>
-          <h3 className="font-medium text-[#2D3E50]">{name}</h3>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <h3 className="font-medium text-foreground">{name}</h3>
+          <div className="w-full bg-muted rounded-full h-2">
             <div
-              className="bg-[#3498DB] h-2 rounded-full"
+              className="bg-primary h-2 rounded-full"
               style={{ width: `${level}%` }}
             />
           </div>

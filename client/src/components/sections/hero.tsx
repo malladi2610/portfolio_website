@@ -22,12 +22,12 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
           </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-[#2D3E50] mb-6">
+
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
             Jane Developer
           </h1>
-          
-          <p className="text-xl md:text-2xl text-[#333333] mb-8 leading-relaxed">
+
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
             Full Stack Developer crafting beautiful and functional web experiences
           </p>
 
@@ -35,7 +35,6 @@ export default function Hero() {
             onClick={scrollToProjects}
             variant="secondary"
             size="lg"
-            className="bg-[#E74C3C] hover:bg-[#d44433] text-white"
           >
             View My Work
           </Button>
@@ -47,7 +46,7 @@ export default function Hero() {
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <ChevronDown className="w-8 h-8 text-[#3498DB]" />
+        <ChevronDown className="w-8 h-8 text-primary" />
       </motion.div>
     </section>
   );

@@ -33,7 +33,7 @@ export default function Blog() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3E50] mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             Latest Blog Posts
           </h2>
 
@@ -41,7 +41,7 @@ export default function Blog() {
             {BLOG_POSTS.map((post, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle>{post.title}</CardTitle>
+                  <CardTitle className="text-foreground">{post.title}</CardTitle>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     <span>{post.date}</span>

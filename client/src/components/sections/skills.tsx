@@ -12,7 +12,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2D3E50] mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             Skills & Experience
           </h2>
 
