@@ -8,8 +8,8 @@ import Home from "@/pages/home";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 
-// Get the base URL from environment variable or default to '/'
-const base = import.meta.env.VITE_BASE_URL || '/';
+// Use the proper base URL for GitHub Pages
+const base = "/portfolio_website";
 
 function Router() {
   return (
