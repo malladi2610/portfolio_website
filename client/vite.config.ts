@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/portfolio_website/' : '/',
@@ -15,5 +14,10 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, '../dist/public'),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
+    },
   },
 });

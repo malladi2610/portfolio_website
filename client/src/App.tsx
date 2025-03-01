@@ -12,7 +12,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
-        <Router base="/portfolio_website">
+        <Router>
           <div className="min-h-screen bg-background flex flex-col">
             <Nav />
             <main className="flex-grow pt-16">
