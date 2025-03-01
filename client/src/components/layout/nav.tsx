@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -48,6 +48,12 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => {
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [location, setLocation] = useLocation();
+
+  const handleLogoClick = () => {
+    setLocation("/portfolio_website/");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <motion.header
@@ -57,9 +63,9 @@ export default function Nav() {
       transition={{ duration: 0.6 }}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/">
-          <a className="text-xl font-bold text-foreground">JD</a>
-        </Link>
+        <button onClick={handleLogoClick} className="text-xl font-bold text-foreground">
+          JD
+        </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
