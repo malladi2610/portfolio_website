@@ -6,16 +6,23 @@ import { ThemeProvider } from "./components/theme-provider";
 import App from "./App";
 import "./index.css";
 
+// Add global error handler
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+  console.error('Global error:', { msg, url, lineNo, columnNo, error });
+  return false;
+};
+
 // Add error boundary for better error handling
 class ErrorBoundary extends React.Component<{ children: React.ReactNode }> {
   state = { hasError: false, error: null };
 
   static getDerivedStateFromError(error: any) {
+    console.error('Error caught in boundary:', error);
     return { hasError: true, error };
   }
 
   componentDidCatch(error: any, errorInfo: any) {
-    console.error('Render error:', error, errorInfo);
+    console.error('Component stack:', errorInfo.componentStack);
   }
 
   render() {
@@ -34,14 +41,22 @@ class ErrorBoundary extends React.Component<{ children: React.ReactNode }> {
   }
 }
 
-const root = createRoot(document.getElementById("root")!);
+// Initialize root with error tracking
+const container = document.getElementById("root");
+if (!container) {
+  throw new Error("Failed to find root element");
+}
+
+const root = createRoot(container);
 
 root.render(
-  <ErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-        <App />
-      </ThemeProvider>
-    </QueryClientProvider>
-  </ErrorBoundary>
+  <React.StrictMode>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+          <App />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  </React.StrictMode>
 );
