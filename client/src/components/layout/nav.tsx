@@ -19,25 +19,25 @@ const NavLinks = ({ onClick }: { onClick?: () => void }) => {
     <>
       <button
         onClick={() => handleScroll('projects')}
-        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+        className="text-foreground hover:text-primary transition-colors"
       >
         Projects
       </button>
       <button
         onClick={() => handleScroll('skills')}
-        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+        className="text-foreground hover:text-primary transition-colors"
       >
         Skills
       </button>
       <button
         onClick={() => handleScroll('blog')}
-        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+        className="text-foreground hover:text-primary transition-colors"
       >
         Blog
       </button>
       <button
         onClick={() => handleScroll('contact')}
-        className="text-[#333333] hover:text-[#3498DB] transition-colors"
+        className="text-foreground hover:text-primary transition-colors"
       >
         Contact
       </button>
@@ -58,7 +58,7 @@ export default function Nav() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/">
-          <a className="text-xl font-bold text-[#2D3E50]">JD</a>
+          <a className="text-xl font-bold text-foreground">JD</a>
         </Link>
 
         {/* Desktop Navigation */}
