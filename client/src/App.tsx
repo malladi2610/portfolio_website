@@ -1,4 +1,4 @@
-import { Router, Route } from "wouter";
+import { Route } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,17 +12,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
-        <Router base="/portfolio_website">
-          <div className="min-h-screen bg-background flex flex-col">
-            <Nav />
-            <main className="flex-grow">
-              <Route path="/" component={Home} />
-              <Route component={NotFound} />
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
-        </Router>
+        <div className="min-h-screen bg-background flex flex-col">
+          <Nav />
+          <main className="flex-grow">
+            <Route path="/portfolio_website/" component={Home} />
+            <Route path="/portfolio_website/*" component={NotFound} />
+          </main>
+          <Footer />
+        </div>
+        <Toaster />
       </ThemeProvider>
     </QueryClientProvider>
   );
