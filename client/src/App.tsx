@@ -8,9 +8,12 @@ import Home from "@/pages/home";
 import Nav from "@/components/layout/nav";
 import Footer from "@/components/layout/footer";
 
+// Get the base URL from environment variable or default to '/'
+const base = import.meta.env.VITE_BASE_URL || '/';
+
 function Router() {
   return (
-    <Switch>
+    <Switch base={base}>
       <Route path="/" component={Home} />
       <Route component={NotFound} />
     </Switch>
